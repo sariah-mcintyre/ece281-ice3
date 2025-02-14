@@ -8,6 +8,8 @@ Targeted toward Digilent Basys3. Make sure to install the [board files](https://
 
 Tested on Vivado 2024.2
 
+
+
 ---
 
 ## GitHub Actions Testbench
@@ -22,3 +24,9 @@ Then it **elaborates** the entity defined by `$TB_ENTITY`
 Finally, the workflow **runs** the simulation. If successful then it will quietly exit with a `0` code.
 If any of the `assert` statements fail then GHDL will cease the simulation and exit with non-zero code; this will also cause the workflow to fail.
 Assert statements of other severity levels will be reported, but not fail the workflow.
+
+![waveform for ICE3]({90B2BF24-2420-4FAE-B34D-FC0A2AFCC180}.png)
+![entity sketch](image.png)
+
+## Documentation
+Worked with C3C Kathryn Unger to understand the concepts behind moving to VHDL better. 
