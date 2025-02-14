@@ -1,4 +1,4 @@
---+----------------------------------------------------------------------------
+------------------------------------------------------------------------------
 --| 
 --| DESCRIPTION   : This file implements the top level module for a BASYS 
 --|
@@ -54,13 +54,37 @@ entity top_basys3 is
 end top_basys3;
 
 architecture top_basys3_arch of top_basys3 is 
-	
-    -- declare the component of your top-level design
 
-    -- declare any signals you will need	
+
+	
+    component ripple_adder is
+        port ( A : in STD_LOGIC_VECTOR (3 downto 0);
+           B : in STD_LOGIC_VECTOR (3 downto 0);
+           Cin : in STD_LOGIC;
+           S : out STD_LOGIC_VECTOR (3 downto 0);
+           Cout : out STD_LOGIC);
+        end component ripple_adder;-- declare the component of your top-level design
+
+    -- declare any signals you will need
+       signal b_carry  : STD_LOGIC_VECTOR(3 downto 0); -- for ripple between adders
+       signal a_carry  : STD_LOGIC_VECTOR(3 downto 0); -- for ripple between adders
+       signal s_carry  : STD_LOGIC_VECTOR(3 downto 0); -- for ripple between adders
+       signal c_carry  : std_logic_vector(0 downto 0); -- for adders
+
+
+
+	
   
 begin
 	-- PORT MAPS --------------------
+	ripple_adder_0: ripple_adder
+    port map(
+       A => sw(4 downto 1),
+       B => sw(15 downto 12),
+       Cin => sw(0),
+       S => led(3 downto 0),
+       Cout => led(15)
+    );
    
 	---------------------------------
 	
